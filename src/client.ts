@@ -79,6 +79,49 @@ export async function workspaceClient(context: vscode.ExtensionContext, ws: vsco
         minimumContrastRatio: 0,
     }) as Settings
 
+    function createDebouncedFunction<F extends (...args: Parameters<F>) => ReturnType<F>>(
+        callback: F,
+        debounceTime = 300,
+    ) {
+        let timeoutId: NodeJS.Timeout | null = null
+        let isCallbackRunning = false
+        let queuedParams: Parameters<F> | null = null
+
+        return function debouncedFunction(...params: Parameters<F>): void {
+            // Clear any existing timeout
+            if (timeoutId !== null) {
+                clearTimeout(timeoutId)
+                timeoutId = null
+            }
+
+            // If a callback is currently running, queue the next one
+            if (isCallbackRunning) {
+                queuedParams = params
+                return
+            }
+
+            // Set a timeout to call the callback
+            timeoutId = setTimeout(() => {
+                isCallbackRunning = true
+
+                try {
+                    callback(...params)
+                } finally {
+                    isCallbackRunning = false
+
+                    // If a callback was queued, call it now
+                    if (queuedParams !== null) {
+                        const nextParams = queuedParams
+                        queuedParams = null
+                        debouncedFunction(...(nextParams as Parameters<F>))
+                    }
+                }
+            }, debounceTime)
+        }
+    }
+
+    const debounceRender = createDebouncedFunction(render, 500)
+
     const pnpContext = findPnpApi(workspaceFolder.fsPath)
     if (pnpContext) {
         console.info("Enable PnP")
@@ -200,14 +243,14 @@ export async function workspaceClient(context: vscode.ExtensionContext, ws: vsco
                 if (activeTextEditor?.document.uri.scheme === "output") return
                 console.trace("onDidChangeActiveTextEditor()")
                 if (editor === activeTextEditor) {
-                    await render()
+                    debounceRender()
                 }
             }),
             vscode.workspace.onDidChangeTextDocument(async event => {
                 if (event.document.uri.scheme === "output") return
                 console.trace("onDidChangeTextDocument()")
                 if (event.document === activeTextEditor?.document) {
-                    await render()
+                    debounceRender()
                 }
             }),
             vscode.workspace.onDidChangeConfiguration(async event => {
@@ -423,6 +466,7 @@ export async function workspaceClient(context: vscode.ExtensionContext, ws: vsco
         const document = editor.document
         if (document) {
             if (document.uri.scheme === "output") return
+            console.trace("render()")
             diagnosticCollection.clear()
             const srv = matchService(document.uri, services)
             if (!srv) return
