@@ -2,7 +2,7 @@
   "editor.suggest.showSnippets": false,
   "emmet.showAbbreviationSuggestions": false,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true
+    "source.organizeImports": "explicit"
   },
   "editor.formatOnSave": true,
   "formatFiles.excludePattern": "node_modules,out,.gitignore,.editorconfig,yarn.lock",

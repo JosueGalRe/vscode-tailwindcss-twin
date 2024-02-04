@@ -1,6 +1,6 @@
 {
-  "name": "tailwindcss-intellisense-twin",
-  "displayName": "Tailwind Twin IntelliSense",
+  "name": "debounced-tailwindcss-intellisense-twin",
+  "displayName": "Debounced Tailwind Twin IntelliSense",
   "markdownDescription": "Tailwind VSCode Extension for twin.macro",
   "version": "3.0.0",
   "author": "lightyen",
@@ -50,6 +50,9 @@
     "check-format": "prettier --check \"**/*.{ts,json,yml}\"",
     "package": "vsce package --no-dependencies"
   },
+  "optionalDependencies": {
+    "fsevents": "2.3.2"
+  },
   "devDependencies": {
     "@formatjs/intl": "2.3.1",
     "@swc-node/register": "1.5.1",
@@ -73,7 +76,6 @@
     "eslint": "8.21.0",
     "eslint-webpack-plugin": "3.2.0",
     "fork-ts-checker-webpack-plugin": "7.2.13",
-    "fsevents": "2.3.2",
     "fuse.js": "6.6.2",
     "jest": "28.1.3",
     "js-yaml-loader": "1.2.2",

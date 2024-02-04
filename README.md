@@ -8,11 +8,11 @@ This is a VSCode Tailwind IntelliSense Extension which supports [twin.macro](htt
 
 ## Features
 
-- auto completion
-- hover
-- color decoration
-- document references
-- diagnostics
+-   auto completion
+-   hover
+-   color decoration
+-   document references
+-   diagnostics
 
 ## Pack
 
@@ -26,7 +26,7 @@ pnpm install && pnpm package
 
 ```json5
 {
-  // none
+    // none
 }
 ```
 
@@ -34,20 +34,20 @@ pnpm install && pnpm package
 
 ```json5
 {
-  "tailwindcss.colorDecorators": "inherit", // inherit from "editor.colorDecorators"
-  "tailwindcss.references": true,
-  "tailwindcss.diagnostics": {
-    "enabled": true,
-    "emptyChecking": true,
-  },
-  "tailwindcss.preferVariantWithParentheses": false,
-  "tailwindcss.fallbackDefaultConfig": true,
-  "tailwindcss.enabled": true,
-  "tailwindcss.jsxPropImportChecking": true,
-  "tailwindcss.rootFontSize": 16,
-  "tailwindcss.logLevel": "info",
-  "tailwindcss.hoverColorHint": "none",
-  "tailwindcss.otherLanguages": []
+    "tailwindcss.colorDecorators": "inherit", // inherit from "editor.colorDecorators"
+    "tailwindcss.references": true,
+    "tailwindcss.diagnostics": {
+        enabled: true,
+        emptyChecking: true,
+    },
+    "tailwindcss.preferVariantWithParentheses": false,
+    "tailwindcss.fallbackDefaultConfig": true,
+    "tailwindcss.enabled": true,
+    "tailwindcss.jsxPropImportChecking": true,
+    "tailwindcss.rootFontSize": 16,
+    "tailwindcss.logLevel": "info",
+    "tailwindcss.hoverColorHint": "none",
+    "tailwindcss.otherLanguages": [],
 }
 ```
 
@@ -56,15 +56,15 @@ pnpm install && pnpm package
 ```json5
 // example
 {
-  "workbench.colorCustomizations": {
-    "[One Dark Pro Darker]": {
-      "editorHoverWidget.background": "#1f2229e8",
-      "editorSuggestWidget.background": "#1f2229e8",
-      "editor.wordHighlightBackground": "#0000",
-      "editor.wordHighlightBorder": "#3f3f3f3d",
-      "editor.wordHighlightStrongBorder": "#3f3f3f3d"
-    }
-  }
+    "workbench.colorCustomizations": {
+        "[One Dark Pro Darker]": {
+            "editorHoverWidget.background": "#1f2229e8",
+            "editorSuggestWidget.background": "#1f2229e8",
+            "editor.wordHighlightBackground": "#0000",
+            "editor.wordHighlightBorder": "#3f3f3f3d",
+            "editor.wordHighlightStrongBorder": "#3f3f3f3d",
+        },
+    },
 }
 ```
 
@@ -72,53 +72,53 @@ pnpm install && pnpm package
 
 ```json5
 {
-  "editor.tokenColorCustomizations": {
-    "[One Dark Pro Darker]": {
-      "textMateRules": [
-        {
-          "scope": "support.constant.classname.twin",
-          "settings": {
-            "foreground": "#7ddb89"
-          }
+    "editor.tokenColorCustomizations": {
+        "[One Dark Pro Darker]": {
+            textMateRules: [
+                {
+                    scope: "support.constant.classname.twin",
+                    settings: {
+                        foreground: "#7ddb89",
+                    },
+                },
+                {
+                    scope: "entity.other.inherited-class.variant.twin",
+                    settings: {
+                        foreground: "#c678dd",
+                    },
+                },
+                {
+                    scope: "support.type.short-css.prop.twin",
+                    settings: {
+                        foreground: "#5dbeff",
+                    },
+                },
+                {
+                    scope: "punctuation.section.embedded.short-css",
+                    settings: {
+                        foreground: "#5dbeff",
+                    },
+                },
+                {
+                    scope: "support.type.arbitrary-style.prop.twin",
+                    settings: {
+                        foreground: "#8a88fc",
+                    },
+                },
+                {
+                    scope: "punctuation.section.embedded.arbitrary-style",
+                    settings: {
+                        foreground: "#8a88fc",
+                    },
+                },
+                {
+                    scope: "entity.name.variable.css-value.twin",
+                    settings: {
+                        foreground: "#abb2bb",
+                    },
+                },
+            ],
         },
-        {
-          "scope": "entity.other.inherited-class.variant.twin",
-          "settings": {
-            "foreground": "#c678dd"
-          }
-        },
-        {
-          "scope": "support.type.short-css.prop.twin",
-          "settings": {
-            "foreground": "#5dbeff"
-          }
-        },
-        {
-          "scope": "punctuation.section.embedded.short-css",
-          "settings": {
-            "foreground": "#5dbeff"
-          }
-        },
-        {
-          "scope": "support.type.arbitrary-style.prop.twin",
-            "settings": {
-              "foreground": "#8a88fc"
-            }
-        },
-        {
-          "scope": "punctuation.section.embedded.arbitrary-style",
-             "settings": {
-               "foreground": "#8a88fc"
-            }
-        },
-        {
-          "scope": "entity.name.variable.css-value.twin",
-          "settings": {
-            "foreground": "#abb2bb"
-          }
-        }
-      ]
-    }
-  }
+    },
 }
 ```

@@ -4,12 +4,12 @@ import { URI } from "vscode-uri"
 export type CompletionItemPayloadType = "theme" | "screen" | "color" | "utility" | "variant" | "cssProp" | "css"
 
 export type CompletionItemPayload = {
-	type: CompletionItemPayloadType
-	entry?: IPropertyData
-	uri?: URI
+    type: CompletionItemPayloadType
+    entry?: IPropertyData
+    uri?: URI
 }
 
 export interface ICompletionItem extends CompletionItem {
-	label: string
-	data: CompletionItemPayload
+    label: string
+    data: CompletionItemPayload
 }
