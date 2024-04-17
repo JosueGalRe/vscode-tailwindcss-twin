@@ -100,7 +100,7 @@ export function createLogger({
     } as const
 
     function log(level: LogLevel, args: unknown[]) {
-        if (logLevel < level) {
+        if (Number(logLevel) < level) {
             return
         }
         const datetime = `[${new Date().toLocaleString()}]`

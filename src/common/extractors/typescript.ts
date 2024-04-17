@@ -32,7 +32,7 @@ function findNode(
     }
 
     if (ts.isJsxAttribute(node)) {
-        const attrName = node.name.text
+        const attrName = node.name.getText()
         if (features.jsxProp && node.initializer) {
             if (attrName === "tw") {
                 let token: ts.StringLiteral | ts.NoSubstitutionTemplateLiteral | undefined
@@ -112,7 +112,7 @@ function findAllNode(
     features: Features,
 ): Array<{ token: ts.StringLiteral | ts.NoSubstitutionTemplateLiteral; kind: ExtractedTokenKind }> {
     if (ts.isJsxAttribute(node)) {
-        const attrName = node.name.text
+        const attrName = node.name.getText()
         if (features.jsxProp && node.initializer) {
             if (attrName === "tw") {
                 let token: ts.StringLiteral | undefined
